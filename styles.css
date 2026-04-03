@@ -1339,8 +1339,13 @@ ul {
         padding: 0 1rem;
     }
 
+    .section-padding {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .contact-form {
-        padding: 1rem;
+        padding: 1.25rem 1rem;
         border-radius: 16px;
     }
 
