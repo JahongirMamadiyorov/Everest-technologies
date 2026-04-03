@@ -1344,9 +1344,18 @@ ul {
         padding-right: 0;
     }
 
+    .contact-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+    }
+
     .contact-form {
         padding: 1.25rem 1rem;
         border-radius: 16px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .form-control {
@@ -3233,6 +3242,41 @@ select.form-control:not(:invalid) {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: #fff;
+}
+
+.mobile-theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    width: 100%;
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.mobile-theme-toggle:hover,
+.mobile-theme-toggle:active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+}
+
+.mobile-theme-toggle .icon-sun,
+.mobile-theme-toggle .icon-moon { width: 20px; height: 20px; }
+.mobile-theme-toggle .icon-sun { display: none; }
+.mobile-theme-toggle .icon-moon { display: block; }
+
+[data-theme="light"] .mobile-theme-toggle .icon-sun { display: block; }
+[data-theme="light"] .mobile-theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .mobile-theme-toggle {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* ============================================================

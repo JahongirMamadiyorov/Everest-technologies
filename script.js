@@ -16,15 +16,18 @@ function getParticleColor() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
+    function toggleTheme() {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
     }
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (toggleBtn) toggleBtn.addEventListener('click', toggleTheme);
+
+    const mobileToggleBtn = document.getElementById('mobile-theme-toggle');
+    if (mobileToggleBtn) mobileToggleBtn.addEventListener('click', toggleTheme);
 
     // Sync with OS theme changes only if user hasn't manually overridden
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
