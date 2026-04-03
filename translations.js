@@ -11,6 +11,7 @@
             'nav.about':        'Biz haqimizda',
             'nav.contact':      'Aloqa',
             'nav.cta':          'Loyihani boshlash',
+            'nav.theme':        'Mavzuni o\'zgartirish',
 
             // Hero
             'hero.prefix':      'Biz quramiz',
@@ -189,6 +190,7 @@
             'nav.about':        'About',
             'nav.contact':      'Contact',
             'nav.cta':          'Start a Project',
+            'nav.theme':        'Toggle Theme',
 
             'hero.prefix':      'We Build',
             'hero.phrase1':     'Exceptional Websites',
@@ -351,6 +353,7 @@
             'nav.about':        'О нас',
             'nav.contact':      'Контакт',
             'nav.cta':          'Начать проект',
+            'nav.theme':        'Сменить тему',
 
             'hero.prefix':      'Мы создаём',
             'hero.phrase1':     'Исключительные сайты',
