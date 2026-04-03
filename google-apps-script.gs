@@ -9,7 +9,12 @@ var SHEET_NAME     = 'Лист1';
 var SPREADSHEET_ID = '1aJ0AH58HUJ4BsmYiTrF1bPUakUzfXgzzwVDa3DEvGiI';
 
 // Email to receive order notifications
-var NOTIFY_EMAIL   = 'm.jahongir2205@gmail.com';
+var NOTIFY_EMAIL     = 'mounteveresttechnologies@gmail.com';
+
+// Telegram bot notification
+var TELEGRAM_TOKEN    = '8610426800:AAGD39rkGfO_m0nFlMZgaNieGL3ZAKBLAQM';
+var TELEGRAM_CHAT_ID  = '1122453844';          // Personal chat
+var TELEGRAM_CHANNEL  = '-1003625559548';   // Channel
 
 // Brand colors
 var COLOR_HEADER_BG   = '#1e1b4b';
@@ -92,6 +97,7 @@ function processSubmission(data) {
                   COLOR_BORDER, SpreadsheetApp.BorderStyle.SOLID);
 
   sendNotification(data);
+  sendTelegramNotification(data);
 
   return ContentService
     .createTextOutput(JSON.stringify({ success: true }))
@@ -151,6 +157,31 @@ function sendNotification(data) {
     '📊 Open Google Sheet →</a></div></div>';
 
   MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, htmlBody: htmlBody });
+}
+
+function sendTelegramNotification(data) {
+  try {
+    var text =
+      '🏔 *New Inquiry — Mount Everest Technologies*\n\n' +
+      '👤 *Name:* '         + (data.name        || '—') + '\n' +
+      '📧 *Email:* '        + (data.email       || '—') + '\n' +
+      '🏢 *Company:* '      + (data.company     || '—') + '\n' +
+      '📱 *Phone:* '        + (data.phone       || '—') + '\n' +
+      '🛠 *Project Type:* ' + (data.projectType || '—') + '\n' +
+      '💰 *Budget:* '       + (data.budget      || '—') + '\n' +
+      '📝 *Message:*\n'     + (data.message     || '—');
+
+    var url = 'https://api.telegram.org/bot' + TELEGRAM_TOKEN + '/sendMessage';
+    var opts = { method: 'post', contentType: 'application/json' };
+
+    opts.payload = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: text, parse_mode: 'Markdown' });
+    UrlFetchApp.fetch(url, opts);
+
+    opts.payload = JSON.stringify({ chat_id: TELEGRAM_CHANNEL, text: text, parse_mode: 'Markdown' });
+    UrlFetchApp.fetch(url, opts);
+  } catch (e) {
+    Logger.log('Telegram error: ' + e.toString());
+  }
 }
 
 function emailRow(label, value) {
