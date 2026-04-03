@@ -1,8 +1,8 @@
 // --- Theme Toggle ---
 (function() {
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-        document.documentElement.setAttribute('data-theme', saved);
+    const manualThisSession = sessionStorage.getItem('theme');
+    if (manualThisSession) {
+        document.documentElement.setAttribute('data-theme', manualThisSession);
     } else {
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
+        sessionStorage.setItem('theme', next);
     }
 
     const toggleBtn = document.getElementById('theme-toggle');
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Sync with OS theme changes only if user hasn't manually overridden
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) {
+        if (!sessionStorage.getItem('theme')) {
             document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
         }
     });
