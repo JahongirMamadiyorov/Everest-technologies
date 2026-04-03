@@ -1335,9 +1335,18 @@ ul {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
     .contact-form {
-        padding: 1.25rem;
+        padding: 1rem;
         border-radius: 16px;
+    }
+
+    .form-control {
+        font-size: 16px; /* prevents iOS auto-zoom on focus */
+        padding: 0.875rem;
     }
 
     .contact-info-card h4 {
