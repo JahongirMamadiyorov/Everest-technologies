@@ -670,7 +670,7 @@ document.querySelectorAll('#email, #phone').forEach(input => {
 
 // --- Google Sheets Integration ---
 // After deploying google-apps-script.gs as a Web App, paste your URL below:
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuMmR79P-3obNyhru-3qsTeGdxx39xwhCrnp0EP9Hbtb1eFQ0RLpIKywm4_VlLB_I/exec  ';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzuMmR79P-3obNyhru-3qsTeGdxx39xwhCrnp0EP9Hbtb1eFQ0RLpIKywm4_VlLB_I/exec';
 
 function getFormData(idPrefix) {
     // idPrefix is '' for main form, 'modal-' for modal
